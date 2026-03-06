@@ -1,0 +1,312 @@
+{
+  "info": {
+    "_postman_id": "d0fbdb42-8e34-4653-977c-ecb649f719bf",
+    "name": "Projects",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52889045",
+    "_collection_link": "https://go.postman.co/collection/52889045-d0fbdb42-8e34-4653-977c-ecb649f719bf?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Crear",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var response = pm.response.json();\r",
+              "    pm.collectionVariables.set(\"PROJECT_ID\",response.Id);\r",
+              "\r",
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"jk\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(4);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Patrici@1302",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kardsbjj@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Content\" : \"jk\",\r\n    \"Icon\": 4\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/projects.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Editar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"PatriciaJ Editado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Patrici@1302",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kardsbjj@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Content\" : \"PatriciaJ Editado\",\r\n    \"Icon\": 2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Leer",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"PatriciaJ Editado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Patrici@1302",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kardsbjj@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Verify Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Name\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Content).to.eql(\"PatriciaJ Editado\");\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Project Icon\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Icon).to.eql(2);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Verify Delete Project\", function () {\r",
+              "  var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.Deleted).to.eql(true);\r",
+              "});\r",
+              "    "
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "Patrici@1302",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "kardsbjj@gmail.com",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://todo.ly/api/projects/{{PROJECT_ID}}.json",
+          "protocol": "https",
+          "host": [
+            "todo",
+            "ly"
+          ],
+          "path": [
+            "api",
+            "projects",
+            "{{PROJECT_ID}}.json"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "PROJECT_ID",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
